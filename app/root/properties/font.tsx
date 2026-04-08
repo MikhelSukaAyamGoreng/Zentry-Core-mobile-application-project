@@ -18,6 +18,6 @@ export const fonts = {
   regular: "Quicksand_400Regular",
   medium: "Quicksand_500Medium",
   semi_bold: "Quicksand_600SemiBold",
-  bolde: "Quicksand_700Bold",
+  bold: "Quicksand_700Bold",
   light: "Quicksand_300Light",
 };
