@@ -79,4 +79,35 @@ export default StyleSheet.create({
     fontSize: font_sizes.regular,
     fontFamily: fonts.regular,
   },
+  menu_card_room: {
+    borderColor: colors.battleshipGray,
+    borderWidth: 1,
+    borderRadius: 6,
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-between",
+    width: "100%",
+    height: 60,
+  },
+  room_image: {
+    width: 30,
+    height: 30,
+  },
+  room_image_container: {
+    backgroundColor: colors.jet,
+    padding: 10,
+    borderRadius: 6,
+    marginRight: 15,
+  },
+  room_title_text: {
+    fontFamily: fonts.bold,
+    color: colors.platinum,
+    paddingRight: 15,
+  },
+  room_container: {
+    marginHorizontal: width * 0.05,
+    flexDirection: "column",
+    gap: width * 0.05,
+    flexWrap: "wrap",
+  },
 });
