@@ -110,4 +110,15 @@ export default StyleSheet.create({
     gap: width * 0.05,
     flexWrap: "wrap",
   },
+  room_card: {
+    borderColor: colors.battleshipGray,
+    borderWidth: 1,
+    borderRadius: 6,
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "flex-start",
+    paddingHorizontal: 15,
+    width: "100%",
+    height: 80,
+  },
 });
