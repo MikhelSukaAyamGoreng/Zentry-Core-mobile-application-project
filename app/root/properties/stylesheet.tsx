@@ -121,4 +121,17 @@ export default StyleSheet.create({
     width: "100%",
     height: 80,
   },
+  module_container: {
+    borderColor: colors.platinum,
+    borderWidth: 2,
+    borderRadius: 10,
+    width: "90%",
+    height: "90%",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  addmodule_color: {
+    color: colors.platinum,
+  },
 });
