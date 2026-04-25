@@ -134,4 +134,9 @@ export default StyleSheet.create({
   addmodule_color: {
     color: colors.platinum,
   },
+  background_index: {
+    flex: 1,
+    width: "100%",
+    height: "100%",
+  },
 });
