@@ -1,70 +1,103 @@
-import { BlurView } from "expo-blur";
 import React, { useState } from "react";
-import { Image, Modal, Text, TouchableOpacity, View } from "react-native";
+import {
+  Image,
+  Modal,
+  Text,
+  TextInput,
+  TouchableOpacity,
+  View,
+} from "react-native";
 import styles from "../properties/stylesheet";
 
 const LivingRoom = () => {
-  const [isModalVisible, setIsModalVisible] = useState(false);
-  const [track] = useState(0);
+  const [addModalvisible, setAddModalVisible] = useState(false);
+  const [moduleName, setModuleName] = useState(``);
+  const [moduleDescription, setModuleDescription] = useState(``);
+  const [warningModalVisible, setWarningModalVisible] = useState(false);
 
-  const addModule = () => {};
+  const CreateMoel = () => {};
 
   return (
     <View style={styles.container}>
       <View style={styles.menu_container}>
         <View style={styles.menu_card_room}>
           <View style={styles.room_image_container}>
-            <Image
-              source={require("../../../assets/icons/Home.png")}
-              style={styles.room_image}
-            />
+            <TouchableOpacity onPress={() => setAddModalVisible(true)}>
+              <Image
+                source={require("../../../assets/icons/Home.png")}
+                style={styles.room_image}
+              />
+            </TouchableOpacity>
           </View>
           <Text style={styles.room_title_text}>Living Room</Text>
         </View>
       </View>
 
-      <View style={styles.room_container}>
-        <TouchableOpacity
-          onPress={() => setIsModalVisible(true)}
-          style={{ width: "100%" }}
-        >
-          <View style={styles.room_card}>
-            <View style={styles.menu_image_container}></View>
-            <Text style={styles.menu_texts}> module {track}</Text>
+      <View style={styles.AddModelContainer}>
+        <View style={styles.AddModelWrapper}>
+          <Text style={styles.AddModelText}> Module Name {moduleName} </Text>
+          <View style={styles.AddModuleCamera}>
+            <Text style={styles.AddModelText}> Camera</Text>
           </View>
-        </TouchableOpacity>
-        <TouchableOpacity onPress={() => setIsModalVisible(true)}>
-          <View style={styles.room_card}>
-            <View style={styles.menu_image_container}></View>
-            <Text style={styles.menu_texts}> module {track} </Text>
+          <View style={styles.AddModuleDescriptionMenu}>
+            <TouchableOpacity
+              style={styles.AddModelDescriptionText}
+              onPress={() => setWarningModalVisible(true)}
+            >
+              <Text style={styles.AddModelText2}> Warning</Text>
+            </TouchableOpacity>
+            <TouchableOpacity style={styles.AddModelDescriptionText2}>
+              <Text style={styles.AddModelText2}> Camera </Text>
+            </TouchableOpacity>
+            <Text style={styles.AddModelText3}> Safe </Text>
           </View>
-        </TouchableOpacity>
+        </View>
       </View>
 
-      {/* Modal moved outside everything, at the bottom of the root View */}
-      <Modal visible={isModalVisible} transparent={true} animationType="fade">
-        <BlurView
-          intensity={100}
-          tint="dark"
-          style={{
-            flex: 1,
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-          }}
-        >
-          <View style={styles.module_container}>
-            <TouchableOpacity
-              onPress={() => setIsModalVisible(false)}
-              style={{ paddingVertical: 20 }}
-            >
-              <Text style={styles.addmodule_color}> Close </Text>
-            </TouchableOpacity>
-            <TouchableOpacity onPress={() => addModule()}>
-              <Text style={styles.addmodule_color}> Add Module </Text>
-            </TouchableOpacity>
+      <Modal
+        visible={warningModalVisible}
+        transparent={false}
+        animationType="fade"
+      >
+        <View style={styles.warningModalContainer}>
+          <View style={styles.warningModalWrapper}>
+            <Text style={styles.warningModalText}> Warning 1</Text>
           </View>
-        </BlurView>
+        </View>
+      </Modal>
+
+      <Modal visible={addModalvisible} transparent={true} animationType="fade">
+        <View style={styles.addModuleContainer2}>
+          <View style={styles.addModuleWrapper2}>
+            <TouchableOpacity
+              onPress={() => setAddModalVisible(false)}
+              style={styles.addModuleCloseButton}
+            >
+              <Text style={styles.addModuleText}> Close </Text>
+            </TouchableOpacity>
+            <View
+              style={{
+                width: "100%",
+                height: 1,
+                backgroundColor: "rgba(255, 255, 255, 0.5)",
+                marginVertical: 10,
+              }}
+            ></View>
+            <Text style={styles.addModuleText}> Module Name </Text>
+            <TextInput
+              style={styles.ModuleTextInput}
+              placeholder="message"
+              onChangeText={(newtext) => setModuleName(newtext)}
+            />
+            <Text style={styles.addModuleText}> Module Description</Text>
+            <TextInput
+              style={styles.ModuleTextInput}
+              placeholder="Description"
+              multiline
+              onChangeText={(newtext) => setModuleDescription(newtext)}
+            />
+          </View>
+        </View>
       </Modal>
     </View>
   );
